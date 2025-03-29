@@ -21,7 +21,7 @@ const openai = createOpenAI({
 });
 // Initialize LLM provider
 console.time("Scraper Initialization");
-const llm = openai.chat("gpt-4o");
+const llm = openai.chat("gpt-4o-mini");
 const scraper = new LLMScraper(llm);
 console.timeEnd("Scraper Initialization");
 
@@ -33,9 +33,7 @@ console.timeEnd("Browser Launch");
 
 console.log("Visiting Page...");
 console.time("Page Visit");
-await page.goto(
-  "https://www.hungryhuy.com/bo-kho-recipe-vietnamese-beef-stew/"
-);
+await page.goto("https://blog.sosa.cat/marshmallow-de-chocolate/");
 console.timeEnd("Page Visit");
 
 const prompt = `You are a sophisticated web scraper. Extract the contents of the webpage. for quantity in ingredients, use number instead of fractions. Try to use same unit text for same units e.g. tsps=teaspoon etc. Try to find an image to use as the main image for the recipe. If you can't find one, leave it blank.
